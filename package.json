@@ -1,0 +1,9 @@
+{
+  "name": "WebScrapingDeFrases",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/GadsDev/WebScrapingDeFrases.git",
+  "author": "GadsDev",
+  "license": "MIT",
+  "private": true
+}
