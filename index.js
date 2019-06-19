@@ -1,23 +1,28 @@
 const Hapi = require('@hapi/hapi');
 
-// Config Server Defined
-const server = Hapi.server({
-    port: 3000,
-    host: 'localhost'
-});
+
+// Rotas do DataScraping
+const scrapData = require('./src/routes/scrapData');
 
 async function startServer () {
     try {
-        await server.start();
+        // Server Config
+        const server = Hapi.server({
+            port: 8000,
+            host: 'localhost'
+        });        
         console.log('Server running on %s', server.info.uri);
-        return server;
         
+        // Routes
+        server.route(scrapData.list());
+
+        await server.start();  
+
+        return server;        
     } catch (error) {
         console.log(error);
         process.exit(1);
     }    
 };
-
-startServer();
 
 module.exports = startServer();
