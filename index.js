@@ -5,7 +5,7 @@ const scrapData = require('./src/routes/scrapData');
 
 // Server Config
 const server = Hapi.server({
-    port: 8000,
+    port: 3030,
     host: 'localhost'
 });        
 
