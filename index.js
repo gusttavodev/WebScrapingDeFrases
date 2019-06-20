@@ -39,7 +39,7 @@ async function startServer () {
         console.log('Server running on %s', server.info.uri);
 
         // Routes
-        server.route(scrapData.list());
+        server.route(scrapData.create());
         // Config do Swagger
         const swaggerOptions = {
             info: {
@@ -50,8 +50,7 @@ async function startServer () {
         };
         // Plugins Hapi
         await server.register([
-            hapiCors,
-            hapiJwt,
+            hapiCors,           
             Vision,
             Inert,
             {

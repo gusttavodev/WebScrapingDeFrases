@@ -24,17 +24,7 @@ function getFrases($) {
    
     return frases
 }
-// Função que faz o scraping
-async function scrapingData(tipo) {
-  // Traz o Html
-  const data = await getHtml(`https://www.frasesdobem.com.br/${tipo}`);
-  const $ = cheerio.load(data); 
 
-  // Traz o array de frases
-  const arrFrases = getFrases($); 
- 
-  return arrFrases;
-}
 
 async function getData() {
     const arrFrases = await scrapingData("frases-de-reflexao")
@@ -43,5 +33,17 @@ async function getData() {
         
     });  
 }
+module.exports  = {
+    // Função que faz o scraping
+    async  scrapingData(tipo) {
+    // Traz o Html
+    const data = await getHtml(`https://www.frasesdobem.com.br/${tipo}`);
+    const $ = cheerio.load(data); 
+  
+    // Traz o array de frases
+    const arrFrases = getFrases($); 
+   
+    return arrFrases;
+  }
+};
 
-getData();
