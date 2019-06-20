@@ -55,7 +55,8 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+.env.prod
+.env.dev
 
 # next.js build output
 .next
