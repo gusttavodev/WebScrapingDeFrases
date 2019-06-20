@@ -18,10 +18,15 @@ config({
 })
 
 const Hapi = require('@hapi/hapi');
+const Inert = require('inert');
+const Vision = require('vision');
+const HapiSwagger = require('hapi-swagger');
+const hapiCors = require('hapi-cors');
+
 const mongoConnect = require('./src/database/mongo/mongoConnect');
 
 // Rotas do DataScraping
-const scrapData = require('./src/routes/scrapData');
+const scrapData = require('./src/routes/scrapFrasesDoBem');
 
 // Server Config
 const server = Hapi.server({
@@ -32,9 +37,29 @@ const server = Hapi.server({
 async function startServer () {
     try {
         console.log('Server running on %s', server.info.uri);
-        
+
         // Routes
         server.route(scrapData.list());
+        // Config do Swagger
+        const swaggerOptions = {
+            info: {
+                title: 'API-Frases',
+                version: 'v1.0',
+            },
+            lang: 'pt',
+        };
+        // Plugins Hapi
+        await server.register([
+            hapiCors,
+            hapiJwt,
+            Vision,
+            Inert,
+            {
+                plugin: HapiSwagger,
+                options: swaggerOptions,
+            },
+        ]);
+        
 
         // Conect Mongo
         const statusMongo = await mongoConnect;

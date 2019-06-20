@@ -25,9 +25,9 @@ function getFrases($) {
     return frases
 }
 // Função que faz o scraping
-async function scrapingData() {
+async function scrapingData(tipo) {
   // Traz o Html
-  const data = await getHtml("https://www.frasesdobem.com.br/frases-de-reflexao");
+  const data = await getHtml(`https://www.frasesdobem.com.br/${tipo}`);
   const $ = cheerio.load(data); 
 
   // Traz o array de frases
@@ -37,9 +37,9 @@ async function scrapingData() {
 }
 
 async function getData() {
-    const arrFrases = await scrapingData()
+    const arrFrases = await scrapingData("frases-de-reflexao")
     arrFrases.forEach(element => {
-        console.log(`Frase ${element}`)
+        console.log(`Frase ${element}`);
         
     });  
 }
