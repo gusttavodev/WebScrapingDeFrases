@@ -1,5 +1,8 @@
 {
   "name": "WebScrapingDeFrases",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/GadsDev/WebScrapingDeFrases.git",
@@ -8,5 +11,8 @@
   "private": true,
   "dependencies": {
     "@hapi/hapi": "^18.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
