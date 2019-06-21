@@ -1,8 +1,9 @@
 const assert = require('assert');
 const server = require('../../index');
 
+// frases-de-reflexao, frases-filosoficas, frases-filosoficas
 const MOCK_ITEM = {
-    tag: 'frases-de-reflexao',
+    tag: 'frases-filosoficas',
     site: 'www.frasesdobem.com.br',    
 };
 
